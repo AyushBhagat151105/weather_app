@@ -1,13 +1,49 @@
+import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:weather_app/secrets.dart';
 
 
 import '../Widget/addinfo.dart';
 import '../Widget/card.dart';
+import 'package:http/http.dart' as http;
 
 
-class WeatherScreen extends StatelessWidget {
+class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
+
+  @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCurrentWeather();
+  }
+
+  Future getCurrentWeather() async{
+    try{
+      String cityName = 'London';
+      final res = await http.get(
+        Uri.parse(
+          'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$openWeatherAPIKey',
+        ),
+      );
+
+      final data = jsonDecode(res.body);
+
+      if(data['cod']!='200') {
+        throw 'An unexpected error occurred';
+      }
+      print(res.body);
+    }catch (e) {
+      throw e.toString();
+    }
+    }
+
 
   @override
   Widget build(BuildContext context) {
