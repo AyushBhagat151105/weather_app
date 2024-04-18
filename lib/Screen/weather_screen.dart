@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
 class WeatherScreen extends StatelessWidget {
@@ -77,18 +78,179 @@ class WeatherScreen extends StatelessWidget {
               ),
               ),
           ),
-            const SizedBox(height: 20,),
+            const SizedBox(height: 15,),
           //   weather forecast card
-           const Row(
-             children: [
-               Card(
-                child: Column(
-                  children: [
-                    Text('Time'),
-                  ],
-                ),  
-               )
-             ],
+           SingleChildScrollView(
+             scrollDirection: Axis.horizontal,
+             child: Row(
+               children: [
+                 Card(
+                   elevation: 6,
+                  child: Container(
+                    width: 100,
+                    padding: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16)
+                    ),
+                    child: const Column(
+                      children: [
+                        Text('03:00',
+                        style:
+                          TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        Icon(Icons.cloud,
+                        size: 32,
+                        ),
+                        SizedBox(height: 16),
+                        Text('320.22',
+                          style:
+                          TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                 ),
+                 Card(
+                   elevation: 6,
+                   child: Container(
+                     width: 100,
+                     padding: const EdgeInsets.all(8.0),
+                     decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(16)
+                     ),
+                     child: const Column(
+                       children: [
+                         Text('03:00',
+                           style:
+                           TextStyle(
+                             fontSize: 16,
+                             fontWeight: FontWeight.bold,
+                           ),
+                         ),
+                         SizedBox(height: 16),
+                         Icon(Icons.cloud,
+                           size: 32,
+                         ),
+                         SizedBox(height: 16),
+                         Text('320.22',
+                           style:
+                           TextStyle(
+                             fontSize: 14,
+                             fontWeight: FontWeight.normal,
+                           ),
+                         ),
+                       ],
+                     ),
+                   ),
+                 ),
+                 Card(
+                   elevation: 6,
+                   child: Container(
+                     width: 100,
+                     padding: const EdgeInsets.all(8.0),
+                     decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(16)
+                     ),
+                     child: const Column(
+                       children: [
+                         Text('03:00',
+                           style:
+                           TextStyle(
+                             fontSize: 16,
+                             fontWeight: FontWeight.bold,
+                           ),
+                         ),
+                         SizedBox(height: 16),
+                         Icon(Icons.cloud,
+                           size: 32,
+                         ),
+                         SizedBox(height: 16),
+                         Text('320.22',
+                           style:
+                           TextStyle(
+                             fontSize: 14,
+                             fontWeight: FontWeight.normal,
+                           ),
+                         ),
+                       ],
+                     ),
+                   ),
+                 ),
+                 Card(
+                   elevation: 6,
+                   child: Container(
+                     width: 100,
+                     padding: const EdgeInsets.all(8.0),
+                     decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(16)
+                     ),
+                     child: const Column(
+                       children: [
+                         Text('03:00',
+                           style:
+                           TextStyle(
+                             fontSize: 16,
+                             fontWeight: FontWeight.bold,
+                           ),
+                         ),
+                         SizedBox(height: 16),
+                         Icon(Icons.cloud,
+                           size: 32,
+                         ),
+                         SizedBox(height: 16),
+                         Text('320.22',
+                           style:
+                           TextStyle(
+                             fontSize: 14,
+                             fontWeight: FontWeight.normal,
+                           ),
+                         ),
+                       ],
+                     ),
+                   ),
+                 ),
+                 Card(
+                   elevation: 6,
+                   child: Container(
+                     width: 100,
+                     padding: const EdgeInsets.all(8.0),
+                     decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(16)
+                     ),
+                     child: const Column(
+                       children: [
+                         Text('03:00',
+                           style:
+                           TextStyle(
+                             fontSize: 16,
+                             fontWeight: FontWeight.bold,
+                           ),
+                         ),
+                         SizedBox(height: 16),
+                         Icon(Icons.cloud,
+                           size: 32,
+                         ),
+                         SizedBox(height: 16),
+                         Text('320.22',
+                           style:
+                           TextStyle(
+                             fontSize: 14,
+                             fontWeight: FontWeight.normal,
+                           ),
+                         ),
+                       ],
+                     ),
+                   ),
+                 ),
+               ],
+             ),
            ),
             // addinfo
             const SizedBox(height: 20),
