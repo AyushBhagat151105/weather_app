@@ -17,16 +17,21 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
+  late double temp;
+  bool isLoading = false;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getCurrentWeather();
   }
 
   Future getCurrentWeather() async{
     try{
-      String cityName = 'London';
+      setState(() {
+        isLoading= true;
+      });
+      String cityName = 'Anand,IN';
       final res = await http.get(
         Uri.parse(
           'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$openWeatherAPIKey',
@@ -38,7 +43,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
       if(data['cod']!='200') {
         throw 'An unexpected error occurred';
       }
-      print(res.body);
+      setState(() {
+        temp = data['list'][0]['main']['temp'];
+        isLoading = false;
+      });
+
     }catch (e) {
       throw e.toString();
     }
@@ -60,7 +69,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
            ),
         ],
       ),
-      body:  Padding(
+      body: isLoading
+      ? const CircularProgressIndicator(
+        
+      ):
+      Padding(
         padding:const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,24 +90,24 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   borderRadius: BorderRadius.circular(16),
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 10,sigmaY: 10),
-                    child: const Padding(
-                      padding: EdgeInsets.all(16.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
-                           Text('300K',
+                           Text('$temp K',
                           style:
-                              TextStyle(
+                          const TextStyle(
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold
                               )
                             ,),
-                          SizedBox(height: 16,),
-                          Icon(Icons.cloud,
+                          const SizedBox(height: 16,),
+                          const Icon(Icons.cloud,
                           size: 64,),
-                          SizedBox(height: 16,),
-                          Text('Rain',
+                          const SizedBox(height: 16,),
+                          const Text('Rain',
                           style:
-                            TextStyle(
+                          TextStyle(
                               fontSize: 20,
                             ),)
                         ],
